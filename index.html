@@ -778,67 +778,79 @@
 
     /* ── GALLERY ─────────────────────────────────── */
     #gallery {
-      padding: 110px 40px;
-      background: var(--light);
+      padding: 110px 0;
+      background: var(--dark);
+      overflow: hidden;
     }
 
-    .gallery-header {
-      max-width: 1200px;
-      margin: 0 auto 52px;
-    }
+    .gal-wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
-    .gallery-header .tag { display: block; margin-bottom: 16px; }
-
-    .gallery-header .gh-row {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
+    .gal-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
       gap: 40px;
+      align-items: end;
+      margin-bottom: 52px;
     }
+
+    .gal-top .tag { display: block; margin-bottom: 16px; }
 
     .gh-h2 {
       font-size: clamp(1.9rem, 3vw, 2.7rem);
       font-weight: 800;
-      color: var(--black);
+      color: #fff;
       letter-spacing: -1px;
       line-height: 1.1;
     }
 
     .gh-p {
       font-size: 0.92rem;
-      color: var(--muted);
-      max-width: 340px;
+      color: rgba(255,255,255,0.45);
+      max-width: 300px;
       line-height: 1.7;
       text-align: right;
+      margin-bottom: 16px;
     }
 
-    .gallery-masonry {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .gal-top-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
       gap: 16px;
     }
 
-    .gal-item {
-      position: relative;
+    .gal-slider-outer {
       overflow: hidden;
-      background: var(--dark);
+      margin: 0 -40px;
+      padding: 0 40px;
     }
 
-    .gal-item:first-child,
-    .gal-item:nth-child(9) {
-      grid-column: span 2;
+    .gal-track {
+      display: flex;
+      gap: 16px;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .gal-track:active { cursor: grabbing; }
+
+    .gal-item {
+      flex: 0 0 calc((100% - 32px) / 3);
+      min-width: 0;
+      position: relative;
+      overflow: hidden;
+      background: var(--charcoal);
     }
 
     .gal-item img {
       width: 100%;
-      height: 100%;
+      height: 280px;
       object-fit: cover;
       display: block;
       transition: transform .5s ease, opacity .3s;
       opacity: 0.85;
-      min-height: 280px;
     }
 
     .gal-item:hover img {
@@ -1379,7 +1391,7 @@
       .svc-panel.active { grid-template-columns: 1fr; }
       .svc-panel-img { height: 300px; }
       .more-services-grid { grid-template-columns: repeat(3, 1fr); }
-      .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
+      .gal-item { flex: 0 0 calc((100% - 16px) / 2); }
       .gal-item:first-child, .gal-item:nth-child(9) { grid-column: span 1; }
       .testi-top { grid-template-columns: 1fr; }
       .testi-top-right { align-items: flex-start; }
@@ -1399,7 +1411,7 @@
       .testi-card { flex: 0 0 100%; }
       .about-img-accent { display: none; }
       .more-services-grid { grid-template-columns: repeat(2, 1fr); }
-      .gallery-masonry { grid-template-columns: 1fr; }
+      .gal-item { flex: 0 0 100%; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bar { flex-direction: column; gap: 8px; text-align: center; }
     }
@@ -1917,14 +1929,24 @@
 
 <!-- ════════ GALLERY ════════ -->
 <section id="gallery">
-  <div class="gallery-header">
-    <span class="tag">Project Portfolio</span>
-    <div class="gh-row">
-      <h2 class="gh-h2">Recent<br />Cleaning Projects</h2>
-      <p class="gh-p">See the results professional exterior cleaning delivers — before and after, across every service.</p>
+  <div class="gal-wrap">
+    <div class="gal-top">
+      <div>
+        <span class="tag">Project Portfolio</span>
+        <h2 class="gh-h2">Recent<br />Cleaning Projects</h2>
+      </div>
+      <div class="gal-top-right">
+        <p class="gh-p">See the results professional exterior cleaning delivers — across every service.</p>
+        <div class="testi-arrows">
+          <button class="testi-arrow" id="gPrev" aria-label="Previous">&#8592;</button>
+          <button class="testi-arrow" id="gNext" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="gallery-masonry">
+  <div class="gal-slider-outer">
+    <div class="gal-wrap">
+      <div class="gal-track" id="galTrack">
     <div class="gal-item"><img src="nelson-worker.jpg" alt="Worker pressure washing house exterior" /><div class="gal-caption"><span class="gal-tag">House Washing</span><h4>Residential Exterior — Complete Soft Wash</h4></div></div>
     <div class="gal-item"><img src="nelson-roof-cleaning.jpg" alt="Roof and gutter cleaning" /><div class="gal-caption"><span class="gal-tag">Roof Cleaning</span><h4>Roof &amp; Gutter Treatment</h4></div></div>
     <div class="gal-item"><img src="nelson-driveway.jpg" alt="Driveway pressure washing" /><div class="gal-caption"><span class="gal-tag">Pressure Washing</span><h4>Driveway &amp; Concrete Cleaning</h4></div></div>
@@ -1974,6 +1996,11 @@
     <div class="gal-item"><img src="nelson-p-37.jpg" alt="Exterior cleaning project" /><div class="gal-caption"><span class="gal-tag">Project</span><h4>Exterior Cleaning</h4></div></div>
     <div class="gal-item"><img src="nelson-p-38.jpg" alt="Exterior cleaning project" /><div class="gal-caption"><span class="gal-tag">Project</span><h4>Exterior Cleaning</h4></div></div>
     <div class="gal-item"><img src="nelson-p-39.jpg" alt="Exterior cleaning project" /><div class="gal-caption"><span class="gal-tag">Project</span><h4>Exterior Cleaning</h4></div></div>
+      </div><!-- end gal-track -->
+    </div><!-- end gal-wrap -->
+  </div><!-- end gal-slider-outer -->
+  <div class="gal-wrap">
+    <div class="testi-dots" id="galDots"></div>
   </div>
 </section>
 
@@ -2354,6 +2381,69 @@
     // Init
     buildDots();
     goTo(0);
+  })();
+
+  // ── Gallery slider ───────────────────────────────
+  (function () {
+    const track   = document.getElementById('galTrack');
+    const prevBtn = document.getElementById('gPrev');
+    const nextBtn = document.getElementById('gNext');
+    const dotsWrap= document.getElementById('galDots');
+    const cards   = Array.from(track.children);
+
+    let current = 0, perView = 3, startX = 0, isDragging = false, dragOffset = 0;
+
+    function getPerView() {
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 1080) return 2;
+      return 3;
+    }
+    function maxIndex() { return Math.max(0, cards.length - perView); }
+    function getCardWidth() { return cards[0] ? cards[0].getBoundingClientRect().width + 16 : 0; }
+
+    function goTo(index) {
+      perView = getPerView();
+      current = Math.max(0, Math.min(index, maxIndex()));
+      track.style.transform = `translateX(-${current * getCardWidth()}px)`;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current >= maxIndex();
+      updateDots();
+    }
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      perView = getPerView();
+      for (let i = 0; i <= maxIndex(); i++) {
+        const d = document.createElement('button');
+        d.className = 'testi-dot' + (i === current ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+      }
+    }
+    function updateDots() {
+      Array.from(dotsWrap.children).forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    track.addEventListener('mousedown',  e => { isDragging = true; startX = e.clientX; track.style.transition = 'none'; });
+    track.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].clientX; track.style.transition = 'none'; }, { passive: true });
+    track.addEventListener('mousemove',  e => { if (!isDragging) return; dragOffset = e.clientX - startX; track.style.transform = `translateX(${-current * getCardWidth() + dragOffset}px)`; });
+    track.addEventListener('touchmove',  e => { if (!isDragging) return; dragOffset = e.touches[0].clientX - startX; track.style.transform = `translateX(${-current * getCardWidth() + dragOffset}px)`; }, { passive: true });
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false; track.style.transition = '';
+      if (dragOffset < -60) goTo(current + 1);
+      else if (dragOffset > 60) goTo(current - 1);
+      else goTo(current);
+      dragOffset = 0;
+    }
+    track.addEventListener('mouseup',    endDrag);
+    track.addEventListener('mouseleave', endDrag);
+    track.addEventListener('touchend',   endDrag);
+    window.addEventListener('resize', () => { buildDots(); goTo(current); });
+    buildDots(); goTo(0);
   })();
 
   // ── Gallery Lightbox ──────────────────────────────
