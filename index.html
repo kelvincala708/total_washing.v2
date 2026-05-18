@@ -1199,12 +1199,12 @@
     }
 
     .cta-inner {
-      max-width: 1200px;
+      max-width: 1120px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 80px;
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
       position: relative;
       z-index: 2;
     }
@@ -1236,8 +1236,6 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      align-items: stretch;
-      min-width: 240px;
     }
 
     .cta-phone {
@@ -1246,8 +1244,9 @@
       font-size: 1.3rem;
       color: #fff;
       letter-spacing: -0.5px;
-      text-align: center;
-      padding: 16px 32px;
+      display: inline-block;
+      margin-top: 28px;
+      padding: 14px 28px;
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.04);
       transition: border-color .2s, background .2s;
@@ -1384,36 +1383,76 @@
     @media (max-width: 1080px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-right { display: none; }
-      .about-grid,
-      .why-layout,
+      .about-grid, .why-layout { grid-template-columns: 1fr; }
       .cta-inner { grid-template-columns: 1fr; }
       .section-header { grid-template-columns: 1fr; }
       .svc-panel.active { grid-template-columns: 1fr; }
       .svc-panel-img { height: 300px; }
       .more-services-grid { grid-template-columns: repeat(3, 1fr); }
       .gal-item { flex: 0 0 calc((100% - 16px) / 2); }
-      .gal-item:first-child, .gal-item:nth-child(9) { grid-column: span 1; }
+      .gal-top { grid-template-columns: 1fr; gap: 20px; }
+      .gal-top-right { align-items: flex-start; }
+      .gh-p { text-align: left; max-width: 100%; }
       .testi-top { grid-template-columns: 1fr; }
       .testi-top-right { align-items: flex-start; }
       .testi-card { flex: 0 0 calc((100% - 16px) / 2); }
       .process-steps { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .cta-right { flex-direction: row; flex-wrap: wrap; }
+      .cta-right { width: 100%; }
+      .quote-form { max-width: 100%; }
     }
 
     @media (max-width: 768px) {
-      .wrap, section { padding-left: 24px; padding-right: 24px; }
-      #nav { width: calc(100% - 32px); top: 12px; }
-      .nav-inner { padding: 0 18px; }
+      .wrap { padding-left: 20px; padding-right: 20px; }
+      #nav { width: calc(100% - 24px); top: 10px; }
+      .nav-inner { padding: 0 14px; height: 56px; }
       .nav-links { display: none; }
-      #about, #services, #why, #gallery, #process, #cta { padding-top: 72px; padding-bottom: 72px; }
-      .testi-card { flex: 0 0 100%; }
+      .nav-brand .b1 { font-size: 0.82rem; }
+      .nav-cta { padding: 9px 16px; font-size: 0.68rem; letter-spacing: 1px; }
+      #hero { min-height: 100svh; }
+      .hero-inner { padding: 120px 20px 60px; }
+      #about, #services, #why, #process, #cta { padding-top: 64px; padding-bottom: 64px; }
+      #gallery, #testimonials, #statsbar { padding-top: 64px; padding-bottom: 64px; }
+      .svc-inner { padding: 0 20px; }
+      .svc-panel-img { height: 240px; }
+      .svc-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 0; }
+      .svc-tab { font-size: 0.7rem; padding: 14px 16px; white-space: nowrap; }
+      .why-img { max-height: 280px; width: 100%; object-fit: cover; }
       .about-img-accent { display: none; }
+      .testi-card { flex: 0 0 100%; }
       .more-services-grid { grid-template-columns: repeat(2, 1fr); }
       .gal-item { flex: 0 0 100%; }
-      .footer-grid { grid-template-columns: 1fr; }
+      .gal-item img { height: 240px; }
+      .gal-wrap { padding: 0 20px; }
+      .gal-slider-outer { margin: 0 -20px; padding: 0 20px; }
+      .testi-slider-outer { margin: 0 -20px; padding: 0 20px; }
+      .testi-wrap { padding: 0 20px; }
+      .cta-inner { padding: 0 20px; gap: 40px; }
+      .cta-h2 { font-size: 2.2rem; letter-spacing: -1px; }
+      .cta-right { width: 100%; }
+      .quote-form { max-width: 100%; min-width: unset; padding: 24px 18px; }
+      .footer-grid { grid-template-columns: 1fr; padding: 0 20px; }
       .footer-bar { flex-direction: column; gap: 8px; text-align: center; }
+      .proc-step { padding-left: 0; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-inner { padding: 110px 16px 50px; }
+      .nav-brand .b1 { font-size: 0.78rem; }
+      .nav-cta { padding: 8px 12px; font-size: 0.62rem; }
+      .more-services-grid { grid-template-columns: 1fr 1fr; }
+      .ms-card { min-height: 140px; }
+      .process-steps { gap: 32px; }
+      .footer-grid { gap: 32px; }
+      footer { padding: 60px 16px 28px; }
+      .gal-wrap { padding: 0 16px; }
+      .gal-slider-outer { margin: 0 -16px; padding: 0 16px; }
+      .testi-slider-outer { margin: 0 -16px; padding: 0 16px; }
+      .testi-wrap { padding: 0 16px; }
+      .cta-inner { padding: 0 16px; }
+      .wrap { padding-left: 16px; padding-right: 16px; }
     }
 
     /* ── GALLERY LIGHTBOX ──────────────────────────── */
@@ -1479,9 +1518,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      min-width: 320px;
       width: 100%;
-      max-width: 460px;
     }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .form-field {
@@ -1834,7 +1871,7 @@
   <div class="why-layout">
     <div class="why-img-col">
       <div class="why-teal-accent"></div>
-      <img src="nelson-commercial.jpg" alt="Commercial storefront pressure washing" class="why-img" />
+      <img src="nelson-p-32.jpg" alt="Professional exterior cleaning project" class="why-img" />
       <div class="why-overlay-card">
         <div class="oc-num">5.0</div>
         <div class="oc-txt">Google Rating</div>
@@ -2127,7 +2164,7 @@
 <!-- ════════ CTA ════════ -->
 <section id="cta">
   <div class="cta-glow"></div>
-  <div class="cta-inner" style="grid-template-columns: 1fr 1fr; gap: 60px;">
+  <div class="cta-inner">
     <div class="cta-left">
       <span class="tag">Ready to Get Started?</span>
       <h2 class="cta-h2">
@@ -2137,9 +2174,9 @@
         We handle all your exterior cleaning needs — residential or commercial.
         Fill out the form and we'll get back to you the same day.
       </p>
-      <a href="tel:7163351529" class="cta-phone" style="display:inline-block;margin-top:28px;">(716) 335-1529</a>
+      <a href="tel:7163351529" class="cta-phone">(716) 335-1529</a>
     </div>
-    <div class="cta-right" style="align-items:flex-start;">
+    <div class="cta-right">
       <!-- QUOTE FORM — action: replace YOUR_FORM_ID with Formspree ID once client email is confirmed -->
       <form class="quote-form" id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <div class="form-row">
