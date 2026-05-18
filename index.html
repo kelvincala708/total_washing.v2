@@ -3,7 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Total House Washing & Commercial</title>
+  <title>Total House Washing & Commercial | Western New York</title>
+  <meta name="description" content="Professional house washing, roof cleaning, pressure washing, and exterior cleaning for homes and businesses across Western New York. Licensed, insured, free estimates." />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="Total House Washing & Commercial" />
+  <meta property="og:description" content="Reliable exterior cleaning for homes and businesses across Western New York. Soft wash, pressure wash, roof cleaning, and more. Call (716) 335-1529." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="nelson-house-washing.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Total House Washing & Commercial" />
+  <meta name="twitter:description" content="Reliable exterior cleaning for homes and businesses across Western New York." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Total House Washing & Commercial",
+    "description": "Professional exterior cleaning for residential and commercial properties across Western New York.",
+    "telephone": "+17163351529",
+    "areaServed": "Western New York",
+    "openingHours": "Mo-Sa 07:00-18:00",
+    "priceRange": "$$",
+    "image": "nelson-house-washing.jpg",
+    "sameAs": []
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -1380,6 +1404,140 @@
       .footer-bar { flex-direction: column; gap: 8px; text-align: center; }
     }
 
+    /* ── GALLERY LIGHTBOX ──────────────────────────── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+      user-select: none;
+    }
+    #lb-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none; border: none;
+      color: #fff; font-size: 2rem;
+      cursor: pointer; line-height: 1;
+      opacity: 0.7;
+      transition: opacity .2s;
+    }
+    #lb-close:hover { opacity: 1; }
+    .lb-arrow {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; font-size: 1.4rem;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .lb-arrow:hover { background: rgba(0,128,128,0.4); }
+    #lb-prev { left: 16px; }
+    #lb-next { right: 16px; }
+    #lb-counter {
+      position: absolute;
+      bottom: 18px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.5);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+    }
+    .gal-item { cursor: zoom-in; }
+
+    /* ── QUOTE FORM ────────────────────────────────── */
+    .quote-form {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-width: 320px;
+      width: 100%;
+      max-width: 460px;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-field label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color .2s;
+      width: 100%;
+    }
+    .form-field select option { background: #1a1a1a; color: #fff; }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus { border-color: var(--teal); }
+    .form-field textarea { resize: vertical; min-height: 90px; }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--teal);
+      border: none;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background .2s;
+      margin-top: 4px;
+    }
+    .form-submit-btn:hover { background: var(--teal-dk); }
+    .form-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-msg {
+      font-size: 0.88rem;
+      text-align: center;
+      padding: 10px;
+      border-radius: 4px;
+      display: none;
+    }
+    .form-msg.success { background: rgba(0,128,128,0.15); color: #4db6ac; border: 1px solid rgba(0,128,128,0.3); display: block; }
+    .form-msg.error   { background: rgba(220,50,50,0.12); color: #ef9a9a; border: 1px solid rgba(220,50,50,0.25); display: block; }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .quote-form { padding: 24px 18px; min-width: unset; }
+    }
+
   </style>
 </head>
 <body>
@@ -1963,22 +2121,60 @@
 <!-- ════════ CTA ════════ -->
 <section id="cta">
   <div class="cta-glow"></div>
-  <div class="cta-inner">
+  <div class="cta-inner" style="grid-template-columns: 1fr 1fr; gap: 60px;">
     <div class="cta-left">
       <span class="tag">Ready to Get Started?</span>
       <h2 class="cta-h2">
-        Get An<br /><em>Instant</em> Quote
+        Get A<br /><em>Free</em> Quote
       </h2>
       <p class="cta-p">
         We handle all your exterior cleaning needs — residential or commercial.
-        Reach out today for a free, no-pressure estimate.
+        Fill out the form and we'll get back to you the same day.
       </p>
+      <a href="tel:7163351529" class="cta-phone" style="display:inline-block;margin-top:28px;">(716) 335-1529</a>
     </div>
-    <div class="cta-right">
-      <a href="#cta" class="btn btn-teal" style="text-align:center;font-size:0.82rem;letter-spacing:1.5px;">
-        Request A Free Quote
-      </a>
-      <a href="tel:7163351529" class="cta-phone">(716) 335-1529</a>
+    <div class="cta-right" style="align-items:flex-start;">
+      <!-- QUOTE FORM — action: replace YOUR_FORM_ID with Formspree ID once client email is confirmed -->
+      <form class="quote-form" id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="first_name" placeholder="John" required />
+          </div>
+          <div class="form-field">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="last_name" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="femail">Email Address</label>
+          <input type="email" id="femail" name="email" placeholder="john@email.com" required />
+        </div>
+        <div class="form-field">
+          <label for="fphone">Phone Number</label>
+          <input type="tel" id="fphone" name="phone" placeholder="(716) 000-0000" required />
+        </div>
+        <div class="form-field">
+          <label for="fservice">Service Needed</label>
+          <select id="fservice" name="service" required>
+            <option value="" disabled selected>Select a service…</option>
+            <option>House Washing</option>
+            <option>Roof Cleaning</option>
+            <option>Pressure Washing</option>
+            <option>Deck &amp; Fence Cleaning</option>
+            <option>Gutter Cleaning</option>
+            <option>Window Cleaning</option>
+            <option>Commercial Cleaning</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="fmsg">Message (optional)</label>
+          <textarea id="fmsg" name="message" placeholder="Tell us about your property or any specific concerns…"></textarea>
+        </div>
+        <button type="submit" class="form-submit-btn" id="formSubmitBtn">Send My Request</button>
+        <div class="form-msg" id="formMsg"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -1995,7 +2191,11 @@
         on every job.
       </p>
       <div class="f-socials">
+        <!-- TODO: Replace # with real Facebook, Instagram, YouTube URLs from client -->
+        <a href="#" class="f-social" title="Facebook">FB</a>
+        <a href="#" class="f-social" title="Instagram">IG</a>
         <a href="#" class="f-social" title="YouTube">YT</a>
+        <!-- TODO: Replace # with mailto:CLIENTEMAIL@domain.com -->
         <a href="#" class="f-social" title="Email">✉</a>
       </div>
     </div>
@@ -2058,7 +2258,7 @@
   </div>
 
   <div class="footer-bar">
-    <span>&copy; 2024 Total House Washing &amp; Commercial. All Rights Reserved.</span>
+    <span>&copy; 2025 Total House Washing &amp; Commercial. All Rights Reserved.</span>
     <span>Powered by <a href="#">SiteSprint</a></span>
   </div>
 </footer>
@@ -2177,6 +2377,96 @@
     goTo(0);
   })();
 
+  // ── Gallery Lightbox ──────────────────────────────
+  (function () {
+    const lb      = document.getElementById('lightbox');
+    const lbImg   = document.getElementById('lb-img');
+    const lbClose = document.getElementById('lb-close');
+    const lbPrev  = document.getElementById('lb-prev');
+    const lbNext  = document.getElementById('lb-next');
+    const lbCount = document.getElementById('lb-counter');
+
+    const items   = Array.from(document.querySelectorAll('.gal-item img'));
+    let current   = 0;
+
+    function open(index) {
+      current = index;
+      lbImg.src = items[current].src;
+      lbImg.alt = items[current].alt;
+      lbCount.textContent = (current + 1) + ' / ' + items.length;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function prev() { open((current - 1 + items.length) % items.length); }
+    function next() { open((current + 1) % items.length); }
+
+    items.forEach((img, i) => img.parentElement.addEventListener('click', () => open(i)));
+    lbClose.addEventListener('click', close);
+    lbPrev.addEventListener('click', prev);
+    lbNext.addEventListener('click', next);
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape')     close();
+      if (e.key === 'ArrowLeft')  prev();
+      if (e.key === 'ArrowRight') next();
+    });
+  })();
+
+  // ── Quote Form ────────────────────────────────────
+  (function () {
+    const form      = document.getElementById('quoteForm');
+    const submitBtn = document.getElementById('formSubmitBtn');
+    const msgEl     = document.getElementById('formMsg');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      // Warn if Formspree ID hasn't been set yet
+      if (form.action.includes('YOUR_FORM_ID')) {
+        msgEl.className = 'form-msg error';
+        msgEl.textContent = 'Form not yet configured. Please contact us by phone at (716) 335-1529.';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      msgEl.className = 'form-msg';
+      msgEl.textContent = '';
+
+      try {
+        const data = new FormData(form);
+        const res  = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          msgEl.className = 'form-msg success';
+          msgEl.textContent = 'Thank you! We\'ll be in touch within one business day.';
+          form.reset();
+        } else {
+          throw new Error('server error');
+        }
+      } catch {
+        msgEl.className = 'form-msg error';
+        msgEl.textContent = 'Something went wrong. Please call us at (716) 335-1529.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send My Request';
+      }
+    });
+  })();
+
   // Intersection fade-in
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
@@ -2197,5 +2487,15 @@
     io.observe(el);
   });
 </script>
+
+<!-- Gallery Lightbox Overlay -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-arrow" id="lb-prev" aria-label="Previous">&#8592;</button>
+  <img id="lb-img" src="" alt="" />
+  <button class="lb-arrow" id="lb-next" aria-label="Next">&#8594;</button>
+  <div id="lb-counter"></div>
+</div>
+
 </body>
 </html>
